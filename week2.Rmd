@@ -1,0 +1,25 @@
+---
+title: "Favorite Whataburger in College Station, TX"
+date: "2023-02-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = FALSE}
+library(leaflet)
+
+whataIcon <- makeIcon(
+  iconUrl = "https://www.jonespubliclibrary.org/whataburger-logo-png-transparent-1.png/", 
+  iconWidth = 31*215/230, iconHeight = 31, 
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+map <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lat = 30.59034, lng = -96.32951, popup = "Order the Honey Butter Chicken Biscuit", icon = whataIcon)
+
+map 
+```
