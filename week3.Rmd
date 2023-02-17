@@ -1,0 +1,29 @@
+---
+title: "Week 3 Presentation and Plotly"
+date: "2023-02-15"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Slide with R Code
+
+```{r, echo = TRUE, warning= FALSE, error=FALSE, message=FALSE}
+library(plotly)
+data("mtcars")
+
+viz <- plot_ly(mtcars, x = ~qsec, y = ~mpg, type = "scatter", 
+               color = ~qsec)
+
+```
+
+## Slide with Plotly graph
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+viz
+```
+
+## Thanks!
