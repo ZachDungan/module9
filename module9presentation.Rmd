@@ -1,0 +1,79 @@
+---
+title: "Prediction Presentation"
+author: "Zach Dungan"
+date: "2023-03-03"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+This is a pitch for a prediction model app that lets users predict the 1/4 mile time and miles per gallon of a car based on car weight, horsepower, and displacement.
+
+The model uses a multilinear regression function to predict both values, and the data is from the 'mtcars' dataset found in base R. 
+
+For this presentation, the app files have been simplified to show the model here. 
+
+## Definitions
+
+- qsec: 1/4 mile time (how fast the car can travel a 1/4 of a mile in)
+- mpg: Miles per gallon (US)
+- wt: Car weight (1000 lbs)
+- hp: Car gross horspower
+- disp: Car displacement (cubic inches)
+
+## The Models
+
+```{r, echo = TRUE}
+modelQsec <- lm(qsec ~ wt + hp + disp, data = mtcars)
+modelMPG <- lm(mpg ~ wt + hp + disp, data = mtcars)
+
+wtInput <- 3.5
+hpInput <- 110
+dispInput <- 250
+
+modelpredQsec <- predict(modelQsec, 
+                         newdata = data.frame(wt = wtInput, 
+                                              hp = hpInput, 
+                                              disp = dispInput))
+modelpredMPG <- predict(modelMPG, 
+                         newdata = data.frame(wt = wtInput, 
+                                              hp = hpInput, 
+                                              disp = dispInput))
+
+```
+
+## The Results (part one)
+```{r, echo= TRUE}
+modelpredQsec
+modelpredMPG
+```
+
+## The Results (part two)
+```{r, echo = TRUE}
+wtInput <- 600
+hpInput <- 80
+dispInput <- 400
+
+modelpredQsec <- predict(modelQsec, 
+                         newdata = data.frame(wt = wtInput, 
+                                              hp = hpInput, 
+                                              disp = dispInput))
+modelpredMPG <- predict(modelMPG, 
+                         newdata = data.frame(wt = wtInput, 
+                                              hp = hpInput, 
+                                              disp = dispInput))
+```
+
+## The Results (part two)
+```{r, echo = TRUE}
+modelpredQsec
+modelpredMPG
+```
+
+## Conclusion
+
+Thank you!
